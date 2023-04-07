@@ -1,18 +1,22 @@
 from dotenv import load_dotenv
 import os
-import redis
+# import redis
 
 load_dotenv()
 
 class ApplicationConfig:
     SECRET_KEY = os.environ["SECRET_KEY"]
 
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_ECHO = True
+    # SQLALCHEMY_TRACK_MODIFICATIONS = False
+    # SQLALCHEMY_ECHO = True
     # SQLALCHEMY_DATABASE_URI = r"sqlite:///./db.sqlite"
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:Chiru1998$@localhost/flask'
+    # SQLALCHEMY_DATABASE_URI = 'mysql://root:Chiru1998$@localhost/flask'
+    MYSQL_HOST = 'localhost'
+    MYSQL_USER = 'root'
+    MYSQL_PASSWORD = 'Chiru1998$'
+    MYSQL_DB = 'Flask'
 
-    SESSION_TYPE = "redis"
-    SESSION_PERMANENT = False
-    SESSION_USE_SIGNER = True
-    SESSION_REDIS = redis.from_url("redis://127.0.0.1:6379")
+    # SESSION_TYPE = "redis"  
+    # SESSION_PERMANENT = False
+    # SESSION_USE_SIGNER = True
+    # SESSION_REDIS = redis.from_url("redis://127.0.0.1:6379")
