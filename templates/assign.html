@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> Index </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">                    
+    </head>
+    <body></br></br></br></br></br>
+        <div align="center">
+          <div align="center" class="border">
+            <div class="header">
+                <h1 class="word">Assign Drivers to Orders</h1>
+                <h1 class="bottom">
+                {% for order in orders %}
+                    Order ID: {{order.order_id}} Tracking ID: {{order.tracking_id}}</br></br>
+                    Starting Address: {{order.from_line1}} {{order.from_line2}}, {{order.from_city}}, {{order.from_state}} {{order.from_zip}}</br></br>
+                    Delivery Address: {{order.to_line1}} {{order.to_line2}}, {{order.to_city}}, {{order.to_state}} {{order.to_zip}}
+                    <form action="{{url_for('assign', id=order.order_id)}}" method="POST">
+                        <div>
+                            <select id="drivers" name="drivers">
+                                {% for driver in drivers %}
+                                <option value="{{driver.user_id}}" selected>{{driver.user_name}}</option>
+                                {% endfor %} 
+                            </select>
+                        </div>
+                        <input type="submit" class="btn" value="Assign"></br> 
+                    </form>  
+                {% endfor %}                 
+                </h1></br></br></br>
+                <a href="{{ url_for('home') }}" class="btn">Return Home</a>
+                </br></br>
+                <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+          </div>
+        </div>
+    </body>
+</html>
